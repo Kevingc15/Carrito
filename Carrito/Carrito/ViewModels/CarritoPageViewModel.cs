@@ -16,12 +16,9 @@ namespace Carrito.ViewModels
             : base(navigationService)
         {
             SelectedItems = new ObservableCollection<Item>();
-            Item = new Item();
         }
 
         public ObservableCollection<Item> SelectedItems { get; set; }
-        private Item item;
-        public Item Item { get => item; set => SetProperty(ref item, value); }
 
         public override void Initialize(INavigationParameters parameters)
         {
@@ -41,21 +38,21 @@ namespace Carrito.ViewModels
 
         public void SumItem(Item item)
         {
-            item.Cantidad++;
+            item.Amount++;
         }
 
         public void RestItem(Item item)
         {
-            if (item.Cantidad > 1)
+            if (item.Amount > 1)
             {
-                item.Cantidad--;
+                item.Amount--;
             }
         }
 
         public ICommand DeleteItemCommand => new DelegateCommand<Item>(DeleteItem);
         public void DeleteItem(Item item)
         {
-            SelectedItems?.Remove(item);
+            SelectedItems.Remove(item);
         }
     }
 }

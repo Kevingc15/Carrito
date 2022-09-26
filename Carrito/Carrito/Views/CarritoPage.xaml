@@ -24,7 +24,7 @@
                                 <Label
                                     Text="{Binding Name}" />
                                 <Label
-                                    Text="{Binding Cantidad}" />
+                                    Text="{Binding Amount}" />
                             </StackLayout>
                             <StackLayout
                                 Padding="0,0,20,0"

@@ -33,7 +33,7 @@
                                         <Span
                                             Text="Cantidad: "/>
                                         <Span
-                                            Text="{Binding Cantidad}" />
+                                            Text="{Binding Amount}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -59,8 +59,7 @@
             Grid.Row="1">
             <Button
                 Text="Agregar al carrito"
-                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ItemsPageViewModel}}, Path=AddCarritoCommand}"
-                CommandParameter="{Binding Items}"/>
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ItemsPageViewModel}}, Path=AddShoppingCarCommand}"/>
             <Grid
                 ColumnDefinitions="*,Auto">
                 <Label>
@@ -89,8 +88,7 @@
             </Grid>
             <Button
                 Text="Ir al carrito"
-                Command="{Binding GoToCarritoCommand}"
-                CommandParameter="{Binding SelectedItems}"/>
+                Command="{Binding GoToShoppingCarCommand}"/>
         </StackLayout>
     </Grid>
 </ContentPage>

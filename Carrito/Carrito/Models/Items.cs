@@ -1,18 +1,16 @@
-﻿using System;
+﻿using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Carrito.Models
 {
-    public class Item
+    public class Item : BindableBase
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
-        public int Cantidad { get; set; }
-        public double Total()
-        {
-            return Price * Cantidad;
-        } 
+        private int amount;
+        public int Amount { get => amount; set => SetProperty(ref amount, value); }
     }
 }

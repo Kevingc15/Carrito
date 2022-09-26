@@ -23,56 +23,55 @@ namespace Carrito.ViewModels
         {
             this.itemsRepository = itemsRepository;
 
-            Item = new Item();
-            Items = new ObservableCollection<Item>();
             SelectedItems = new ObservableCollection<Item>();
+
             GetItems();
 
-            Total = 0;
         }
 
         public ObservableCollection<Item> Items { get; set; }
 
         public ObservableCollection<Item> SelectedItems { get; set; }
-        public Item Item { get; set; }
 
-        public double Total { get; set; }
+        private double total;
+        public double Total { get => total; set => SetProperty(ref total, value); }
 
         public ICommand SumItemCommand => new DelegateCommand<Item>(SumItem);
         public ICommand RestItemCommand => new DelegateCommand<Item>(RestItem);
 
         public void SumItem(Item item)
         {
-            item.Cantidad++;
+            item.Amount++;
         }
 
         public void RestItem(Item item)
         {
-            if(item.Cantidad > 0)
+            if(item.Amount > 0)
             {
-                item.Cantidad--;
+                item.Amount--;
             }
         }
 
-        public ICommand AddCarritoCommand => new DelegateCommand<ObservableCollection<Item>>(AddCarrito);
-        public void AddCarrito(ObservableCollection<Item> items)
+        public ICommand AddShoppingCarCommand => new DelegateCommand(AddShoppingCar);
+        public void AddShoppingCar()
         {
             SelectedItems.Clear();
-            foreach(Item item in items)
+            Total = 0;
+            foreach(Item item in Items)
             {
-                if (item.Cantidad > 0) SelectedItems.Add(item);
-                Total += item.Total();
+                if (item.Amount > 0) SelectedItems.Add(item);
+                Total += item.Price * item.Amount;
             }
         }
 
-        public ICommand GoToCarritoCommand => new DelegateCommand<ObservableCollection<Item>>(GoToCarrito);
+        public ICommand GoToShoppingCarCommand => new DelegateCommand(GoToShopping);
 
-        public async void GoToCarrito(ObservableCollection<Item> items)
+        public async void GoToShopping()
         {
-            if(items.Count > 0)
+            if(SelectedItems.Count > 0)
             {
                 var parameters = new NavigationParameters();
-                parameters.Add("ListItems", items);
+                parameters.Add("ListItems", SelectedItems);
                 await NavigationService.NavigateAsync(NavigationConstants.CarritoPage, parameters);
             }
         }
