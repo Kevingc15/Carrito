@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:Carrito.ViewModels"
+             x:DataType="viewmodels:ItemsPageViewModel"
+             xmlns:models="clr-namespace:Carrito.Models"
+             x:Class="Carrito.Views.ItemsPage">
+    <Grid
+        Padding="50"
+        RowDefinitions="*,Auto"
+        BackgroundColor="#20232A">
+        <ListView
+            HasUnevenRows="True"
+            ItemsSource="{Binding Items}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Item">
+                    <ViewCell>
+                        <Grid
+                            Padding="0,10"
+                            ColumnDefinitions="*,Auto,Auto"
+                            BackgroundColor="#3D3E43">
+                            <StackLayout>
+                                <Label
+                                    Text="{Binding Name}" />
+                                <Label
+                                    Text="{Binding Price}" />
+                            </StackLayout>
+                            <Label
+                                VerticalOptions="Center"
+                                Grid.Column="1">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            Text="Cantidad: "/>
+                                        <Span
+                                            Text="{Binding Cantidad}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <StackLayout
+                                Padding="0,0,20,0"
+                                Spacing="0"
+                                Grid.Column="2">
+                                <Button
+                                    Text="+"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ItemsPageViewModel}}, Path=SumItemCommand}"
+                                    CommandParameter="{Binding}"/>
+                                <Button
+                                    Text="-"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ItemsPageViewModel}}, Path=RestItemCommand}"
+                                    CommandParameter="{Binding}"/>
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout
+            Grid.Row="1">
+            <Button
+                Text="Agregar al carrito"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ItemsPageViewModel}}, Path=AddCarritoCommand}"
+                CommandParameter="{Binding Items}"/>
+            <Grid
+                ColumnDefinitions="*,Auto">
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                Text="Tienes un total de " />
+                            <Span
+                                Text="{Binding SelectedItems.Count}" />
+                            <Span
+                                Text=" productos en el carrito" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label
+                    Grid.Column="1">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                Text="Total a pagar " />
+                            <Span
+                                Text="{Binding Total}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+            <Button
+                Text="Ir al carrito"
+                Command="{Binding GoToCarritoCommand}"
+                CommandParameter="{Binding SelectedItems}"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

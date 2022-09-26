@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Carrito.Views.CarritoPage"
+             xmlns:viewmodels="clr-namespace:Carrito.ViewModels"
+             x:DataType="viewmodels:CarritoPageViewModel"
+             xmlns:models="clr-namespace:Carrito.Models">
+    <StackLayout
+        Padding="50"
+        Grid.Row="1">
+        <Label
+            Text="Resumen"
+            HorizontalOptions="Center"/>
+        <ListView
+            HasUnevenRows="True"
+            ItemsSource="{Binding SelectedItems}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Item">
+                    <ViewCell>
+                        <Grid
+                            Padding="0,10"
+                            ColumnDefinitions="*,Auto,Auto">
+                            <StackLayout>
+                                <Label
+                                    Text="{Binding Name}" />
+                                <Label
+                                    Text="{Binding Cantidad}" />
+                            </StackLayout>
+                            <StackLayout
+                                Padding="0,0,20,0"
+                                Spacing="0"
+                                Grid.Column="1">
+                                <Button
+                                    Text="+" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CarritoPageViewModel}}, Path=SumItemCommand}"
+                                    CommandParameter="{Binding}"/>
+                                <Button
+                                    Text="-" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CarritoPageViewModel}}, Path=RestItemCommand}"
+                                    CommandParameter="{Binding}"/>
+                            </StackLayout>
+                            <Button
+                                Grid.Column="2"
+                                Text="Eliminar"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CarritoPageViewModel}}, Path=DeleteItemCommand}"
+                                CommandParameter="{Binding}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

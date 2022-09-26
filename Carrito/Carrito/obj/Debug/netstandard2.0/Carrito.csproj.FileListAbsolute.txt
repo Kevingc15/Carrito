@@ -1,0 +1,15 @@
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\bin\Debug\netstandard2.0\Carrito.deps.json
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\bin\Debug\netstandard2.0\Carrito.dll
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\bin\Debug\netstandard2.0\Carrito.pdb
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\obj\Debug\netstandard2.0\Carrito.csproj.AssemblyReference.cache
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\obj\Debug\netstandard2.0\Carrito.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\obj\Debug\netstandard2.0\Views\CarritoPage.xaml.g.cs
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\obj\Debug\netstandard2.0\Views\ItemsPage.xaml.g.cs
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\obj\Debug\netstandard2.0\Carrito.AssemblyInfoInputs.cache
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\obj\Debug\netstandard2.0\Carrito.AssemblyInfo.cs
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\obj\Debug\netstandard2.0\Carrito.csproj.CoreCompileInputs.cache
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\obj\Debug\netstandard2.0\Carrito.dll
+C:\Users\Kevin\Dropbox\reposVS\Carrito\Carrito\Carrito\obj\Debug\netstandard2.0\Carrito.pdb
