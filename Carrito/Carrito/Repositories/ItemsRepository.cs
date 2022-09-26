@@ -9,7 +9,7 @@ namespace Carrito.Repositories
 {
     public class ItemsRepository : IItemsRepository
     {
-        public ObservableCollection<Item> GetItems()
+        public List<Item> GetItems()
         {
             Item item1 = new Item();
             item1.Id = 1;
@@ -24,7 +24,7 @@ namespace Carrito.Repositories
             item3.Name = "Tormenta de espadas";
             item3.Price = 63.200;
 
-            ObservableCollection<Item> items = new ObservableCollection<Item>();
+            List<Item> items = new List<Item>();
             items.Add(item1);
             items.Add(item2);
             items.Add(item3);

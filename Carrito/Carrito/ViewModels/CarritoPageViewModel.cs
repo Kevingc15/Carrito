@@ -15,17 +15,18 @@ namespace Carrito.ViewModels
         public CarritoPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
-            SelectedItems = new ObservableCollection<Item>();
+            SelectedItems = new List<Item>();
         }
 
-        public ObservableCollection<Item> SelectedItems { get; set; }
+        public List<Item> selectedItems;
+        public List<Item> SelectedItems { get => selectedItems; set => SetProperty(ref selectedItems, value); }
 
         public override void Initialize(INavigationParameters parameters)
         {
             base.Initialize(parameters);
             if (parameters.ContainsKey("ListItems"))
             {
-                foreach (Item Item in (ObservableCollection<Item>)parameters["ListItems"])
+                foreach (Item Item in (List<Item>)parameters["ListItems"])
                 {
                     SelectedItems.Add(Item);
                 }

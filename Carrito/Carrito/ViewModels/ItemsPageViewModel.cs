@@ -23,21 +23,28 @@ namespace Carrito.ViewModels
         {
             this.itemsRepository = itemsRepository;
 
-            SelectedItems = new ObservableCollection<Item>();
+            SelectedItems = new List<Item>();
 
             GetItems();
 
         }
 
-        public ObservableCollection<Item> Items { get; set; }
+        private List<Item> items;
+        public List<Item> Items { get => items; set => SetProperty(ref items, value); }
 
-        public ObservableCollection<Item> SelectedItems { get; set; }
+        public List<Item> selectedItems;
+        public List<Item> SelectedItems { get => selectedItems; set => SetProperty(ref selectedItems, value); }
 
         private double total;
         public double Total { get => total; set => SetProperty(ref total, value); }
 
+        private int itemsAmount;
+        public int ItemsAmount { get => itemsAmount; set => SetProperty(ref itemsAmount, value); }
+
         public ICommand SumItemCommand => new DelegateCommand<Item>(SumItem);
         public ICommand RestItemCommand => new DelegateCommand<Item>(RestItem);
+        public ICommand AddShoppingCarCommand => new DelegateCommand(AddShoppingCar);
+        public ICommand GoToShoppingCarCommand => new DelegateCommand(GoToShopping);
 
         public void SumItem(Item item)
         {
@@ -52,19 +59,19 @@ namespace Carrito.ViewModels
             }
         }
 
-        public ICommand AddShoppingCarCommand => new DelegateCommand(AddShoppingCar);
         public void AddShoppingCar()
         {
             SelectedItems.Clear();
             Total = 0;
-            foreach(Item item in Items)
+            itemsAmount = 0; 
+            foreach (Item item in Items)
             {
                 if (item.Amount > 0) SelectedItems.Add(item);
                 Total += item.Price * item.Amount;
+                ItemsAmount += item.Amount;
             }
         }
 
-        public ICommand GoToShoppingCarCommand => new DelegateCommand(GoToShopping);
 
         public async void GoToShopping()
         {

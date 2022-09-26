@@ -9,6 +9,6 @@ namespace Carrito.Contracts
 {
     public interface IItemsRepository
     {
-        ObservableCollection<Item> GetItems();
+        List<Item> GetItems();
     }
 }

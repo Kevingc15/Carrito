@@ -68,7 +68,7 @@
                             <Span
                                 Text="Tienes un total de " />
                             <Span
-                                Text="{Binding SelectedItems.Count}" />
+                                Text="{Binding ItemsAmount}" />
                             <Span
                                 Text=" productos en el carrito" />
                         </FormattedString>
